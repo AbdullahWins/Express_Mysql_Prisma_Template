@@ -1,0 +1,21 @@
+Base URL: https://github.com/abdullahwins
+
+//Admin
+router.get("/admins/all", authenticateToken, getAllAdmins);
+router.get("/admins/find/:id", authenticateToken, getOneAdmin);
+router.get("/admins/types/:typeName", authenticateToken, getAdminsByType);
+router.post("/admins/register", RegisterAdmin); = { name, email, password, permissions, status }
+router.post("/admins/login", LoginAdmin); = { email, password }
+router.post("/admins/reset", sendPasswordResetLink); = { email }
+router.patch("/admins/reset", updateAdminPasswordByEmail); = { email, newPassword }
+router.patch("/admins/update/:id", authenticateToken, updateAdminById); = {files} {data}
+router.patch("/admins/resetpassword/:email", updateAdminPasswordByOldPassword); = { oldPassword, newPassword }
+router.delete("/admins/delete/:id", deleteAdminById);
+
+//GirlFriend
+router.get("/girlfriends/all", getAllGirlFriends);
+router.get("/girlfriends/find/:id", getOneGirlFriend);
+router.get("/girlfriends/type/:type", getGirlFriendsByType);
+router.post("/girlfriends/add", addOneGirlFriend); = { name, age, location, pros, cons, type, status }
+router.patch("/girlfriends/update/:id", updateGirlFriendById); = { file } { data }
+router.delete("/girlfriends/delete/:id", deleteOneGirlFriendById);
